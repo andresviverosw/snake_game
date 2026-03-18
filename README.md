@@ -114,15 +114,15 @@ If `localStorage` is blocked/unavailable, the game still works, but ranking pers
 ```mermaid
 flowchart TD
   A[Browser loads index.html] --> B[app.js starts]
-  B --> C[DOM wiring + view setup]
+  B --> C[DOM wiring and view setup]
   C --> D[Home view]
   D -->|Play| E[resetGame; start game loop]
-  E --> F[gameTick() movement + collisions]
-  F -->|Apple| G[score increases; speed up]
-  F -->|Collision| H[endGame()]
-  H --> I[loadRanking() + qualifies check]
+  E --> F[gameTick movement and collisions]
+  F -->|Apple| G[score increases and speed up]
+  F -->|Collision| H[endGame]
+  H --> I[loadRanking and qualifies check]
   I -->|Qualifies| J[show name input overlay]
-  J --> K[saveNameBtn -> saveRanking(top10)]
+  J --> K[saveNameBtn saves ranking top10]
   D -->|Ranking| L[renderRanking; show rankingView]
 ```
 
