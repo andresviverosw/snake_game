@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+
+    <main class="app">
+      <section id="homeView" class="view">
+        <h1 class="title">Snake</h1>
+        <div class="buttonRow">
+          <button id="playBtn" class="cta">Play</button>
+          <button id="rankingBtn" class="cta secondary">Ranking</button>
+        </div>
+        <p class="hint">Use arrow keys to move. Eat the apples. Avoid collisions.</p>
+      </section>
+
+      <section id="gameView" class="view hidden">
+        <header class="topBar">
+          <button id="backFromGameBtn" class="chip">Home</button>
+          <div class="scorePill">
+            <span class="label">Score:</span>
+            <span id="liveScore">0</span>
+          </div>
+          <button id="restartBtn" class="chip">Restart</button>
+        </header>
+
+        <div class="gameWrap">
+          <div class="canvasFrame" id="canvasFrame" tabindex="0" aria-label="Snake game grid">
+            <canvas id="gameCanvas"></canvas>
+            <div id="gameOverlay" class="overlay hidden" role="dialog" aria-modal="true">
+              <div class="card">
+                <div class="cardTitle" id="finalTitle">Game Over</div>
+                <div class="finalScore">
+                  Your score: <span id="finalScoreValue">0</span>
+                </div>
+
+                <div id="top10Section" class="top10Section hidden">
+                  <p class="muted">You made the Top 10! Enter 3 letters:</p>
+                  <div class="nameRow">
+                    <input
+                      id="nameInput"
+                      class="nameInput"
+                      type="text"
+                      maxlength="3"
+                      inputmode="latin"
+                      autocomplete="off"
+                      placeholder="ABC"
+                    />
+                    <button id="saveNameBtn" class="cta small">Save</button>
+                  </div>
+                  <p id="nameError" class="error hidden">Please enter exactly 3 letters (A-Z).</p>
+                </div>
+
+                <div class="cardActions">
+                  <button id="playAgainBtn" class="cta small">Play Again</button>
+                  <button id="toRankingBtn" class="cta small secondary">Ranking</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rankingView" class="view hidden">
+        <header class="topBar">
+          <button id="backFromRankingBtn" class="chip">Home</button>
+          <div class="scorePill">
+            <span class="label">Top 10</span>
+            <span id="rankingMeta"></span>
+          </div>
+          <div class="spacer" aria-hidden="true"></div>
+        </header>
+
+        <div class="rankingWrap">
+          <h2 class="rankingTitle">Ranking</h2>
+          <div class="rankingCard">
+            <ol id="rankingList" class="rankingList"></ol>
+            <p id="noScoresMsg" class="noScores hidden">No scores yet. Play and set a record!</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
